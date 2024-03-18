@@ -1,4 +1,6 @@
+using System.Text.Json.Serialization;
 using Microsoft.EntityFrameworkCore;
+using server.Core.AutomapperConfig;
 using server.Core.Context;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,9 +9,19 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
+//Automapper Configuration
+builder.Services.AddAutoMapper(typeof(AutoMapperConfig));
+
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services
+    .AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
+    });
+
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();

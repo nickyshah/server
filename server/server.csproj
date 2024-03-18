@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="8.0.3" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="8.0.3">
@@ -17,8 +18,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\Dtos\" />
-    <Folder Include="Core\AutomapperConfig\" />
+    <Folder Include="Core\Dtos\Job\" />
+    <Folder Include="Core\Dtos\Candidate\" />
   </ItemGroup>
 
 </Project>
