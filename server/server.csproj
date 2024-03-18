@@ -11,7 +11,9 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Core\" />
+    <Folder Include="Core\Context\" />
+    <Folder Include="Core\Dtos\" />
+    <Folder Include="Core\AutomapperConfig\" />
   </ItemGroup>
 
 </Project>
