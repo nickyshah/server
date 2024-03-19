@@ -60,7 +60,8 @@ namespace server.Controllers
         }
 
         //Download pdf file
-        [HttpGet("download/{url}")]
+        [HttpGet]
+        [Route("download/{url}")]
         public IActionResult DownloadPdfFile(string url)
         {
             var filePath = Path.Combine(Directory.GetCurrentDirectory(), "documents", "pdf", url);
