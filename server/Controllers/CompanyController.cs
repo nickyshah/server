@@ -46,8 +46,35 @@ namespace server.Controllers
             return Ok(convertedCompanies);
         }
 
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<CompanyGetDto>> GetCompany(int id)
+        {
+            var Company = _context.Companies.First(x => x.ID == id);
+            var convertedCompany = _mapper.Map<CompanyGetDto>(Company);
+
+            return Ok(convertedCompany);
+        }
+
         //Update
 
         //Delete
+        [HttpDelete("{id:int}")]
+        public ActionResult DeleteCompany(int id)
+        {
+            try
+            {
+                var companyById = _context.Companies.FirstOrDefault(x => x.ID == id);
+                if (companyById != null)
+                {
+                    _context.Companies.Remove(companyById);
+                    _context.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
+            return Ok();
+        }
     }
 }
