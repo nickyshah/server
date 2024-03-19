@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using server.Core.Dtos.Candidate;
 using server.Core.Dtos.Company;
 using server.Core.Dtos.Job;
 using server.Core.Entities;
@@ -20,7 +21,9 @@ namespace server.Core.AutomapperConfig
                 .ForMember(destination => destination.CompanyName, option => option.MapFrom(src => src.Company.Name));
 
             //Candidate
-
+            CreateMap<CandidateCreateDto, Candidate>().ReverseMap();
+            CreateMap<Candidate, CandidateGetDto>()
+                .ForMember(destination => destination.JobTitle, option => option.MapFrom(src => src.Job.Title));
         }
     }
 }
