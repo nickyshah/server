@@ -30,7 +30,7 @@ namespace server.Controllers
             var fiveMegaByte = 5 * 1024 * 1024;
             var pdfMimeType = "application/pdf";
 
-            if (pdfFile.Length > fiveMegaByte || pdfFile.ContentType == pdfMimeType)
+            if (pdfFile.Length > fiveMegaByte || pdfFile.ContentType != pdfMimeType)
                 return BadRequest("File is Not Valid");
 
             var resumeUrl = Guid.NewGuid().ToString() + ".pdf";
